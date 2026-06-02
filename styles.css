@@ -306,7 +306,7 @@ section {
 .nav-logo {
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    border-radius: var(--radius-sm);
     border: 1.5px solid var(--gold-primary);
     box-shadow: 0 0 10px rgba(184, 144, 28, 0.15);
     transition: var(--transition-medium);
@@ -514,7 +514,7 @@ section {
 .hero-logo-img {
     width: 320px;
     height: 320px;
-    border-radius: 50%;
+    border-radius: var(--radius-lg);
     border: 4px solid var(--bg-surface);
     box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
     transition: var(--transition-medium);
@@ -1198,7 +1198,7 @@ section {
 .brand-mini-img {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 6px;
     border: 1px solid var(--gold-primary);
 }
 
@@ -1429,7 +1429,7 @@ section {
 .footer-logo img {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: var(--radius-sm);
     border: 1.5px solid var(--gold-primary);
 }
 

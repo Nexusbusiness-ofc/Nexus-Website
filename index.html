@@ -29,18 +29,18 @@
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo-area">
-                <img src="assets/logo.jpg" alt="Nexus Logo" class="nav-logo" id="nav-logo-img">
+                <img src="assets/logo.png" alt="Nexus Logo" class="nav-logo" id="nav-logo-img">
                 <span class="logo-text">NEXUS</span>
             </a>
             <nav class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link active">Início</a>
                 <a href="#ebook" class="nav-link">Ebook IA</a>
                 <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#simulador" class="nav-link">Simulador</a>
+                <a href="#simulador" class="nav-link">Orçamento</a>
                 <a href="#contactos" class="nav-link">Contactos</a>
             </nav>
             <div class="nav-cta">
-                <a href="#simulador" class="btn btn-primary btn-sm">Orçamento Grátis</a>
+                <a href="#simulador" class="btn btn-primary btn-sm">Pedir Orçamento</a>
             </div>
             <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menu">
                 <i data-lucide="menu"></i>
@@ -89,7 +89,7 @@
                 <div class="hero-visual fade-in-right">
                     <div class="logo-showcase-container">
                         <div class="logo-glow-ring"></div>
-                        <img src="assets/logo.jpg" alt="Nexus Logo Gold" class="hero-logo-img" id="hero-logo-main">
+                        <img src="assets/logo.png" alt="Nexus Logo Gold" class="hero-logo-img" id="hero-logo-main">
                     </div>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                             <li><i data-lucide="check"></i> Integração com WhatsApp/Redes</li>
                             <li><i data-lucide="check"></i> Páginas de Vendas (Landing Pages)</li>
                         </ul>
-                        <a href="#simulador" class="service-card-link">Simular Orçamento <i data-lucide="chevron-right"></i></a>
+                        <a href="#simulador" class="service-card-link">Planear Projeto <i data-lucide="chevron-right"></i></a>
                     </div>
 
                     <!-- Service 2: Video Editing -->
@@ -208,7 +208,7 @@
                             <li><i data-lucide="check"></i> Correção de cor e áudio limpo</li>
                             <li><i data-lucide="check"></i> Formatos para Reels, Shorts e TikTok</li>
                         </ul>
-                        <a href="#simulador" class="service-card-link">Simular Orçamento <i data-lucide="chevron-right"></i></a>
+                        <a href="#simulador" class="service-card-link">Planear Projeto <i data-lucide="chevron-right"></i></a>
                     </div>
 
                     <!-- Service 3: Presentations & Docs -->
@@ -224,7 +224,7 @@
                             <li><i data-lucide="check"></i> Infográficos e diagramas sob medida</li>
                             <li><i data-lucide="check"></i> Formatação Académica e Profissional</li>
                         </ul>
-                        <a href="#simulador" class="service-card-link">Simular Orçamento <i data-lucide="chevron-right"></i></a>
+                        <a href="#simulador" class="service-card-link">Planear Projeto <i data-lucide="chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -234,9 +234,9 @@
         <section id="simulador" class="simulator-section">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-tagline">Transparência Total</span>
-                    <h2 class="section-title">Simulador de Orçamento Interativo</h2>
-                    <p class="section-subtitle">Selecione os serviços de que necessita e obtenha uma estimativa instantânea. Envie diretamente para mim para iniciarmos a colaboração!</p>
+                    <span class="section-tagline">Planeador de Projetos</span>
+                    <h2 class="section-title">Configure o seu Pedido</h2>
+                    <p class="section-subtitle">Selecione os serviços que necessita e envie o seu planeamento. Responderei com um orçamento personalizado sob medida!</p>
                 </div>
 
                 <div class="simulator-card">
@@ -247,23 +247,23 @@
                             <div class="simulator-group">
                                 <h4 class="group-title"><i data-lucide="globe"></i> Criação de Website</h4>
                                 <div class="checkbox-option">
-                                    <input type="checkbox" id="calc-web-site" class="calc-trigger" data-price="250">
+                                    <input type="checkbox" id="calc-web-site" class="calc-trigger">
                                     <label for="calc-web-site">
                                         <div class="option-details">
                                             <span class="option-name">Website Corporativo / Landing Page</span>
                                             <span class="option-desc">Ideal para produtos ou pequenos negócios, design responsivo.</span>
                                         </div>
-                                        <span class="option-price">Desde 250€</span>
+                                        <span class="option-price">Selecionar</span>
                                     </label>
                                 </div>
                                 <div class="checkbox-option">
-                                    <input type="checkbox" id="calc-web-seo" class="calc-trigger" data-price="75">
+                                    <input type="checkbox" id="calc-web-seo" class="calc-trigger">
                                     <label for="calc-web-seo">
                                         <div class="option-details">
                                             <span class="option-name">Otimização SEO & Performance Avançada</span>
                                             <span class="option-desc">Para rankear melhor nos motores de busca (Google).</span>
                                         </div>
-                                        <span class="option-price">+75€</span>
+                                        <span class="option-price">Adicionar</span>
                                     </label>
                                 </div>
                             </div>
@@ -281,9 +281,9 @@
                                 <div class="select-option">
                                     <label for="calc-video-style" class="option-name">Estilo de Edição</label>
                                     <select id="calc-video-style" class="calc-trigger">
-                                        <option value="basic" data-multiplier="25">Edição Simples (Cortes, Áudio) — 25€/vídeo</option>
-                                        <option value="advanced" data-multiplier="45" selected>Edição Dinâmica (Legendas, Efeitos) — 45€/vídeo</option>
-                                        <option value="premium" data-multiplier="75">Edição Corporativa (Promo, Branding) — 75€/vídeo</option>
+                                        <option value="basic" selected>Edição Simples (Cortes, Áudio)</option>
+                                        <option value="advanced">Edição Dinâmica (Legendas, Efeitos)</option>
+                                        <option value="premium">Edição Corporativa (Promo, Branding)</option>
                                     </select>
                                 </div>
                             </div>
@@ -299,13 +299,13 @@
                                     <input type="range" id="calc-slides-qty" min="0" max="40" value="0" class="calc-slider">
                                 </div>
                                 <div class="checkbox-option">
-                                    <input type="checkbox" id="calc-slides-design" class="calc-trigger" data-price="40">
+                                    <input type="checkbox" id="calc-slides-design" class="calc-trigger">
                                     <label for="calc-slides-design">
                                         <div class="option-details">
                                             <span class="option-name">Criação de Template Personalizado (Master Slide)</span>
                                             <span class="option-desc">Design exclusivo alinhado com a identidade visual da sua marca.</span>
                                         </div>
-                                        <span class="option-price">+40€</span>
+                                        <span class="option-price">Adicionar</span>
                                     </label>
                                 </div>
                             </div>
@@ -320,14 +320,14 @@
                                     <p class="empty-summary-text">Nenhum serviço selecionado ainda.</p>
                                 </div>
                                 <div class="result-total">
-                                    <span>Estimativa Total:</span>
-                                    <span class="price-tag" id="calculated-total">0,00 €</span>
+                                    <span>Orçamento:</span>
+                                    <span class="price-tag" id="calculated-total">Sob Consulta</span>
                                 </div>
-                                <p class="result-disclaimer">*A estimativa é indicativa. O preço final pode variar de acordo com requisitos específicos.</p>
+                                <p class="result-disclaimer">*O valor final será calculado e enviado após a análise dos requisitos específicos do seu projeto.</p>
                                 
                                 <div class="result-actions">
                                     <button class="btn btn-primary btn-block" id="btn-whatsapp-order">
-                                        <i data-lucide="message-square"></i> Enviar Orçamento via WhatsApp
+                                        <i data-lucide="message-square"></i> Enviar Pedido via WhatsApp
                                     </button>
                                     <button class="btn btn-secondary btn-block" id="btn-email-order">
                                         <i data-lucide="mail"></i> Solicitar por Email
@@ -354,7 +354,7 @@
                     <div class="contact-info">
                         <div class="contact-card-v2">
                             <div class="logo-brand-mini">
-                                <img src="assets/logo.jpg" alt="Nexus Brand" class="brand-mini-img">
+                                <img src="assets/logo.png" alt="Nexus Brand" class="brand-mini-img">
                                 <h4>Nexus Serviços</h4>
                             </div>
                             <p>Pronto para elevar o nível da sua comunicação digital. Respondemos com a máxima brevidade.</p>
@@ -421,7 +421,7 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="assets/logo.jpg" alt="Nexus Logo">
+                    <img src="assets/logo.png" alt="Nexus Logo">
                     <span>NEXUS</span>
                 </div>
                 <p>Inovação, ebooks e criação de soluções digitais. Tudo num só lugar.</p>
@@ -438,7 +438,7 @@
                     <li><a href="#home">Início</a></li>
                     <li><a href="#ebook">Ebook IA</a></li>
                     <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#simulador">Orçamento</a></li>
                     <li><a href="#contactos">Contactos</a></li>
                 </ul>
             </div>

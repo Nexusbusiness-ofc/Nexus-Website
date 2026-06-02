@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Run once initially
 
-    // 5. Interactive Budget Simulator
+    // 5. Interactive Project Planner (Budget Simulator without Prices)
     
     // Elements
     const checkWebSite = document.getElementById('calc-web-site');
@@ -100,23 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnWhatsappOrder = document.getElementById('btn-whatsapp-order');
     const btnEmailOrder = document.getElementById('btn-email-order');
 
-    // Values & Math Config
-    const SLIDE_UNIT_PRICE = 4; // 4€ per slide
-
     function updateCalculator() {
-        let total = 0;
         let summaryHTML = '';
+        let itemSelected = false;
         
         // Website Checkbox
         if (checkWebSite.checked) {
-            const price = parseFloat(checkWebSite.dataset.price);
-            total += price;
+            itemSelected = true;
             summaryHTML += `
                 <div class="summary-item">
                     <span>Website Corporativo</span>
-                    <span class="price">${price.toFixed(2)} €</span>
+                    <span class="price"><i data-lucide="check" style="color:var(--gold-primary);width:16px;"></i></span>
                 </div>`;
-            // SEO checkbox only valid if website is checked
             checkWebSeo.disabled = false;
         } else {
             checkWebSeo.checked = false;
@@ -124,12 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (checkWebSeo.checked && !checkWebSeo.disabled) {
-            const price = parseFloat(checkWebSeo.dataset.price);
-            total += price;
             summaryHTML += `
                 <div class="summary-item">
                     <span>Otimização SEO & Google</span>
-                    <span class="price">${price.toFixed(2)} €</span>
+                    <span class="price"><i data-lucide="plus" style="color:var(--gold-primary);width:16px;"></i></span>
                 </div>`;
         }
 
@@ -138,10 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
         videoCountLabel.textContent = videoQty === 1 ? '1 vídeo' : `${videoQty} vídeos`;
         
         if (videoQty > 0) {
+            itemSelected = true;
             const selectedOption = selectVideoStyle.options[selectVideoStyle.selectedIndex];
-            const multiplier = parseFloat(selectedOption.dataset.multiplier);
-            const price = videoQty * multiplier;
-            total += price;
             
             let styleName = 'Simples';
             if (selectedOption.value === 'advanced') styleName = 'Dinâmica';
@@ -150,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryHTML += `
                 <div class="summary-item">
                     <span>Edição de Vídeo (${videoQty}x - ${styleName})</span>
-                    <span class="price">${price.toFixed(2)} €</span>
+                    <span class="price"><i data-lucide="check" style="color:var(--gold-primary);width:16px;"></i></span>
                 </div>`;
         }
 
@@ -159,33 +150,31 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesCountLabel.textContent = slidesQty === 1 ? '1 slide/página' : `${slidesQty} slides/páginas`;
         
         if (slidesQty > 0) {
-            const price = slidesQty * SLIDE_UNIT_PRICE;
-            total += price;
+            itemSelected = true;
             summaryHTML += `
                 <div class="summary-item">
                     <span>Apresentações (${slidesQty} slides)</span>
-                    <span class="price">${price.toFixed(2)} €</span>
+                    <span class="price"><i data-lucide="check" style="color:var(--gold-primary);width:16px;"></i></span>
                 </div>`;
         }
 
         // Slides Master Design template
         if (checkSlidesDesign.checked) {
-            const price = parseFloat(checkSlidesDesign.dataset.price);
-            total += price;
             summaryHTML += `
                 <div class="summary-item">
                     <span>Template Slide Personalizado</span>
-                    <span class="price">${price.toFixed(2)} €</span>
+                    <span class="price"><i data-lucide="plus" style="color:var(--gold-primary);width:16px;"></i></span>
                 </div>`;
         }
 
         // Update display
-        calculatedTotal.textContent = `${total.toFixed(2).replace('.', ',')} €`;
+        calculatedTotal.textContent = itemSelected ? "Sob Consulta" : "Selecione algo";
         
         if (summaryHTML === '') {
             resultSummaryList.innerHTML = '<p class="empty-summary-text">Nenhum serviço selecionado ainda.</p>';
         } else {
             resultSummaryList.innerHTML = summaryHTML;
+            lucide.createIcons();
         }
     }
 
@@ -207,44 +196,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. WhatsApp & Email Message Constructors
     function buildOrderSummaryText() {
         let details = [];
-        let total = 0;
 
         if (checkWebSite.checked) {
-            details.push(`- Website Corporativo / Landing Page (250,00 €)`);
-            total += 250;
+            details.push(`- Website Corporativo / Landing Page`);
         }
         if (checkWebSeo.checked && !checkWebSeo.disabled) {
-            details.push(`- Otimização SEO & Performance (+75,00 €)`);
-            total += 75;
+            details.push(`- Otimização SEO & Performance Google`);
         }
         
         const videoQty = parseInt(rangeVideoQty.value);
         if (videoQty > 0) {
             const selectedOption = selectVideoStyle.options[selectVideoStyle.selectedIndex];
-            const multiplier = parseFloat(selectedOption.dataset.multiplier);
-            const price = videoQty * multiplier;
-            total += price;
             let styleName = 'Simples';
             if (selectedOption.value === 'advanced') styleName = 'Dinâmica';
             if (selectedOption.value === 'premium') styleName = 'Corporativa';
-            details.push(`- Edição de Vídeos: ${videoQty} vídeos (${styleName}) (${price.toFixed(2)} €)`);
+            details.push(`- Edição de Vídeos: ${videoQty} vídeos (Estilo: ${styleName})`);
         }
 
         const slidesQty = parseInt(rangeSlidesQty.value);
         if (slidesQty > 0) {
-            const price = slidesQty * SLIDE_UNIT_PRICE;
-            total += price;
-            details.push(`- Apresentações/Documentos: ${slidesQty} slides (${price.toFixed(2)} €)`);
+            details.push(`- Apresentações/Documentos: ${slidesQty} slides`);
         }
 
         if (checkSlidesDesign.checked) {
-            details.push(`- Template Master Slide Personalizado (+40,00 €)`);
-            total += 40;
+            details.push(`- Template Master Slide Personalizado`);
         }
 
         return {
-            items: details,
-            total: total
+            items: details
         };
     }
 
@@ -252,13 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btnWhatsappOrder.addEventListener('click', () => {
             const summary = buildOrderSummaryText();
             if (summary.items.length === 0) {
-                alert('Por favor, selecione pelo menos um serviço no simulador antes de enviar!');
+                alert('Por favor, selecione pelo menos um serviço no planeador antes de enviar!');
                 return;
             }
 
-            const header = `Olá André! Estive a visitar o site da *Nexus* e fiz uma simulação de orçamento:\n\n`;
+            const header = `Olá André! Estive a visitar o site da *Nexus* e fiz um planeamento de projeto:\n\n`;
             const body = summary.items.join('\n') + `\n\n`;
-            const footer = `*Total Estimado:* ${summary.total.toFixed(2).replace('.', ',')} €\n\nGostaria de discutir os detalhes deste projeto. Como podemos proceder?`;
+            const footer = `Gostaria de obter um orçamento personalizado para este projeto. Como podemos proceder?`;
             
             const fullMessage = encodeURIComponent(header + body + footer);
             const whatsappUrl = `https://wa.me/351966391852?text=${fullMessage}`;
@@ -271,14 +250,14 @@ document.addEventListener('DOMContentLoaded', () => {
         btnEmailOrder.addEventListener('click', () => {
             const summary = buildOrderSummaryText();
             if (summary.items.length === 0) {
-                alert('Por favor, selecione pelo menos um serviço no simulador antes de enviar!');
+                alert('Por favor, selecione pelo menos um serviço no planeador antes de enviar!');
                 return;
             }
 
-            const subject = encodeURIComponent('Solicitação de Orçamento - Nexus');
-            const header = `Olá André,\n\nEstive no site da Nexus e elaborei a seguinte simulação de orçamento:\n\n`;
+            const subject = encodeURIComponent('Solicitação de Orçamento Personalizado - Nexus');
+            const header = `Olá André,\n\nEstive no site da Nexus e elaborei o seguinte planeamento de projeto:\n\n`;
             const body = summary.items.join('\n') + `\n\n`;
-            const footer = `Total Estimado: ${summary.total.toFixed(2).replace('.', ',')} €\n\nGostaria de obter mais informações e agendar uma reunião ou chamada para acertarmos os detalhes.\n\nCom os melhores cumprimentos.`;
+            const footer = `Gostaria de obter um orçamento sob medida para estas necessidades. Aguardo as suas indicações para procedermos.\n\nCom os melhores cumprimentos.`;
             
             const fullBody = encodeURIComponent(header + body + footer);
             const mailtoUrl = `mailto:andresantosalves2008@gmail.com?subject=${subject}&body=${fullBody}`;
@@ -351,6 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-8px)`;
         });
+        
+        card.style.transform = 'translateY(0px)';
         
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';

@@ -515,6 +515,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: logoFloat 6s ease-in-out infinite;
 }
 
 .logo-glow-ring {
@@ -538,9 +539,9 @@ section {
 }
 
 @keyframes logoFloat {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(1deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
 }
 
 .hero-logo-img {
@@ -550,14 +551,15 @@ section {
     border: 3px solid var(--bg-surface);
     box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
     transition: var(--transition-medium);
-    animation: logoFloat 6s ease-in-out infinite;
 }
 
 .hero-logo-img:hover {
-    transform: scale(1.06) translateY(-5px);
+    transform: scale(1.08) rotate(4deg);
     border-color: var(--cyan-primary);
-    box-shadow: 0 15px 35px rgba(0, 172, 193, 0.25), 0 0 30px rgba(184, 144, 28, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 172, 193, 0.3), 0 0 35px rgba(184, 144, 28, 0.25);
+    cursor: pointer;
 }
+
 
 
 /* --- Ebook Section --- */

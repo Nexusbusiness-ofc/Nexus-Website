@@ -1,4 +1,4 @@
-/* DESIGN SYSTEM & GLOBAL VARIABLES (LIGHT THEME - ULTRA PREMIUM) */
+﻿/* DESIGN SYSTEM & GLOBAL VARIABLES (LIGHT THEME - ULTRA PREMIUM) */
 :root {
     --color-bg: #f8f9fc;
     --color-bg-alt: #ffffff;
@@ -1477,4 +1477,13 @@ label {
     .content-container {
         padding-top: 5rem;
     }
+}
+
+/* Custom Social Links Styles */
+.social-link-item, .social-icon-link {
+    transition: var(--transition-fast);
+}
+
+.social-link-item:hover, .social-icon-link:hover {
+    color: var(--color-cyan) !important;
 }

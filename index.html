@@ -1,484 +1,436 @@
-﻿<!DOCTYPE html>
-<html lang="pt-PT">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus | Tudo num só lugar - Ebooks e Serviços Digitais</title>
-    <meta name="description" content="Nexus - Soluções digitais premium por André Alves. Criação de websites, edição de vídeo profissional, apresentações de alto impacto e o ebook 'IA no Trabalho'.">
-    <meta name="author" content="André Alves">
+    <title>Nexus Services - Website 3D Premium & Discord Live</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Outfit for titles, Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=1.5">
 </head>
 <body>
+    <!-- Premium Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
 
-    <!-- Background Decoration Grid & Gradients -->
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
-    <div class="bg-grid"></div>
-    <div class="bg-stripes"></div>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scroll-progress"></div>
 
-    <!-- Header / Navigation -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo-area">
-                <img src="assets/logo.png" alt="Nexus Logo" class="nav-logo" id="nav-logo-img">
-                <span class="logo-text">NEXUS</span>
-            </a>
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active">Início</a>
-                <a href="#ebook" class="nav-link">Ebook IA</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#simulador" class="nav-link">Orçamento</a>
-                <a href="#contactos" class="nav-link">Contactos</a>
-            </nav>
-            <div class="nav-cta">
-                <a href="#simulador" class="btn btn-primary btn-sm">Pedir Orçamento</a>
-            </div>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir Menu">
-                <i data-lucide="menu"></i>
-            </button>
+    <!-- 3D Canvas Background -->
+    <div id="canvas-container"></div>
+    
+    <!-- Ultra-Premium Light Gradients & Orbs -->
+    <div class="light-overlay"></div>
+    <div class="grid-pattern"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- Header Navigation -->
+    <header class="app-header">
+        <div class="logo-container" id="logo-nav">
+            <div class="logo-glow"></div>
+            <img src="logo.jpg" alt="Nexus Logo" class="app-logo">
+            <span class="logo-text">NEXUS</span>
         </div>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="badge fade-in">
-                        <span class="badge-dot"></span>
-                        <span class="badge-text">Inovação & Produtividade</span>
+    <!-- Sidebar Backdrop & Navigation Menu -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <nav class="sidebar-nav" id="sidebar-nav">
+        <ul class="nav-links">
+            <li class="nav-item"><a href="#home" class="nav-link active" data-target="home">Início</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link" data-target="services">Serviços</a></li>
+            <li class="nav-item"><a href="#workflow" class="nav-link" data-target="workflow">Metodologia</a></li>
+            <li class="nav-item"><a href="#discord" class="nav-link" data-target="discord">Discord Live</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link" data-target="contact">Contato</a></li>
+        </ul>
+        <div class="nav-footer">
+            <p>© 2026 Nexus Services. Todos os direitos reservados.</p>
+        </div>
+    </nav>
+
+    <!-- Main Content Container (Scrollable Page) -->
+    <main class="content-container">
+        
+        <!-- SECTION: HOME -->
+        <section id="home" class="content-section scroll-reveal">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Agência Digital Revolucionária</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text-blue">NEXUS</span>
+                    <span class="gradient-text-gold">SERVICES</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Desenvolvemos websites interativos em 3D, editamos vídeos cinematográficos 
+                    de alta qualidade e formatamos apresentações executivas que impactam o mercado.
+                </p>
+                <div class="hero-actions">
+                    <a href="#services" class="btn btn-primary" data-nav="services">
+                        <span>Explorar Serviços</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#discord" class="btn btn-secondary" data-nav="discord">
+                        <i data-lucide="message-square"></i>
+                        <span>Discord Live</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span class="mouse-icon"><span class="wheel"></span></span>
+                <p>Role para explorar</p>
+            </div>
+        </section>
+
+        <!-- SECTION: SERVICES -->
+        <section id="services" class="content-section scroll-reveal">
+            <div class="section-header">
+                <span class="section-tagline">Nosso Portfólio</span>
+                <h2 class="section-title">Serviços Exclusivos</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Card 1: Web Dev with Mockup Shell -->
+                <div class="service-card" data-service="web">
+                    <div class="window-header">
+                        <span class="window-dot dot-red"></span>
+                        <span class="window-dot dot-yellow"></span>
+                        <span class="window-dot dot-green"></span>
+                        <span class="window-title">nexus://services/web-3d</span>
                     </div>
-                    <h1 class="hero-title fade-in-delay-1">
-                        Tudo. Num só <span class="gradient-text">lugar.</span>
-                    </h1>
-                    <p class="hero-description fade-in-delay-2">
-                        Impulsione a sua marca e otimize o seu trabalho. Na <strong>Nexus</strong>, unimos o poder da inteligência artificial à criatividade digital, oferecendo ebooks estratégicos e serviços de alta qualidade.
-                    </p>
-                    <div class="hero-actions fade-in-delay-3">
-                        <a href="#servicos" class="btn btn-primary btn-lg">Explorar Serviços</a>
-                        <a href="#ebook" class="btn btn-secondary btn-lg">Ver Ebook <i data-lucide="arrow-right"></i></a>
+                    <div class="service-image-container">
+                        <img src="web_development_3d.png" alt="Criação de Websites 3D" class="service-img">
+                        <div class="service-img-overlay"></div>
                     </div>
-                    
-                    <div class="hero-stats fade-in-delay-4">
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Foco no Cliente</span>
+                    <div class="service-content">
+                        <div class="service-icon-wrapper">
+                            <i data-lucide="code-2"></i>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-number">PT-PT</span>
-                            <span class="stat-label">Suporte Dedicado</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-number">IA+</span>
-                            <span class="stat-label">Produtividade Máxima</span>
-                        </div>
+                        <h3>Criação de Websites 3D</h3>
+                        <p>Plataformas institucionais e landing pages integradas com gráficos 3D interativos, layouts responsivos e SEO profissional.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle-2"></i> Imersão 3D (WebGL)</li>
+                            <li><i data-lucide="check-circle-2"></i> Performance Ultra-Rápida</li>
+                            <li><i data-lucide="check-circle-2"></i> Estrutura com Otimização SEO</li>
+                        </ul>
+                        <button class="btn btn-card-action" data-go-contact="web">
+                            <span>Solicitar Website</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
                     </div>
+                </div>
+
+                <!-- Card 2: Video Editing with Mockup Shell -->
+                <div class="service-card" data-service="video">
+                    <div class="window-header">
+                        <span class="window-dot dot-red"></span>
+                        <span class="window-dot dot-yellow"></span>
+                        <span class="window-dot dot-green"></span>
+                        <span class="window-title">nexus://services/video-edit</span>
+                    </div>
+                    <div class="service-image-container">
+                        <img src="video_editing_3d.png" alt="Edição de Vídeo Profissional" class="service-img">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon-wrapper">
+                            <i data-lucide="film"></i>
+                        </div>
+                        <h3>Edição de Vídeos</h3>
+                        <p>Edição de vídeos cinematográficos, pós-produção comercial, criação de efeitos visuais (VFX) e sonorização profissional.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle-2"></i> Color Grading Profissional</li>
+                            <li><i data-lucide="check-circle-2"></i> Motion Graphics Dinâmico</li>
+                            <li><i data-lucide="check-circle-2"></i> Sonorização & Efeitos Sonoros</li>
+                        </ul>
+                        <button class="btn btn-card-action" data-go-contact="video">
+                            <span>Solicitar Edição</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Presentations with Mockup Shell -->
+                <div class="service-card" data-service="docs">
+                    <div class="window-header">
+                        <span class="window-dot dot-red"></span>
+                        <span class="window-dot dot-yellow"></span>
+                        <span class="window-dot dot-green"></span>
+                        <span class="window-title">nexus://services/docs-slides</span>
+                    </div>
+                    <div class="service-image-container">
+                        <img src="documents_3d.png" alt="Criação de Apresentações" class="service-img">
+                        <div class="service-img-overlay"></div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon-wrapper">
+                            <i data-lucide="presentation"></i>
+                        </div>
+                        <h3>Apresentações & Documentos</h3>
+                        <p>Slides de alto impacto visual para propostas comerciais, infográficos e relatórios corporativos estruturados.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle-2"></i> Slides Comerciais & Pitches</li>
+                            <li><i data-lucide="check-circle-2"></i> Design Gráfico Editorial</li>
+                            <li><i data-lucide="check-circle-2"></i> Exportação em Vetores & PDF</li>
+                        </ul>
+                        <button class="btn btn-card-action" data-go-contact="docs">
+                            <span>Solicitar Apresentação</span>
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: WORKFLOW (HOW IT WORKS) -->
+        <section id="workflow" class="content-section scroll-reveal">
+            <div class="section-header">
+                <span class="section-tagline">Nossa Metodologia</span>
+                <h2 class="section-title">Como Trabalhamos</h2>
+                <p class="section-description">Etapas transparentes e focadas para materializar seu projeto com excelência técnica.</p>
+            </div>
+            
+            <div class="workflow-timeline-wrapper">
+                <div class="timeline-line">
+                    <div class="timeline-progress" id="timeline-progress"></div>
                 </div>
                 
-                <div class="hero-visual fade-in-right">
-                    <div class="logo-parallax-wrapper">
-                        <div class="logo-showcase-container">
-                            <div class="logo-glow-ring"></div>
-                            <img src="assets/logo.png" alt="Nexus Logo Gold" class="hero-logo-img" id="hero-logo-main">
+                <div class="workflow-timeline">
+                    <!-- Step 1 -->
+                    <div class="workflow-step" data-step="1">
+                        <div class="step-point-container">
+                            <div class="step-point-glow"></div>
+                            <div class="step-point">01</div>
+                        </div>
+                        <div class="workflow-card glass-panel">
+                            <h3>Briefing & Estratégia</h3>
+                            <p>Entendemos suas necessidades, analisamos os objetivos da sua marca e criamos um plano estratégico detalhado.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="workflow-step" data-step="2">
+                        <div class="step-point-container">
+                            <div class="step-point-glow"></div>
+                            <div class="step-point">02</div>
+                        </div>
+                        <div class="workflow-card glass-panel">
+                            <h3>Criação & Desenvolvimento</h3>
+                            <p>Modelamos os ambientes 3D, editamos as mídias com rigor cinematográfico e desenvolvemos os códigos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="workflow-step" data-step="3">
+                        <div class="step-point-container">
+                            <div class="step-point-glow"></div>
+                            <div class="step-point">03</div>
+                        </div>
+                        <div class="workflow-card glass-panel">
+                            <h3>Ajustes & Entrega</h3>
+                            <p>Refinamos a performance baseados no seu feedback e entregamos os arquivos otimizados e prontos.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Ebook Section -->
-        <section id="ebook" class="ebook-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-tagline">O Nosso Produto Estrela</span>
-                    <div class="fashion-divider"></div>
-                    <h2 class="section-title">Domine o Futuro com a Inteligência Artificial</h2>
-                    <p class="section-subtitle">O guia definitivo para automatizar tarefas, criar estratégias inovadoras e poupar horas de trabalho diário.</p>
-                </div>
+        <!-- SECTION: DISCORD LIVE -->
+        <section id="discord" class="content-section scroll-reveal">
+            <div class="section-header">
+                <span class="section-tagline">Integração em Tempo Real</span>
+                <h2 class="section-title">Comunidade Discord</h2>
+                <p class="section-description">
+                    Visualize o status de atividade da nossa comunidade em tempo real. Membros ativos, canais de voz e conexões diretas.
+                </p>
+            </div>
 
-                <div class="ebook-grid">
-                    <div class="ebook-visual-card">
-                        <div class="ebook-glow"></div>
-                        <img src="assets/ebook_cover.jpg" alt="Capa do Ebook IA no Trabalho" class="ebook-cover-img" id="ebook-cover-img-id">
-                        <div class="ebook-tag">Best Seller</div>
+            <!-- Discord Widget Panel -->
+            <div class="discord-widget-wrapper">
+                
+                <!-- Main Widget Layout -->
+                <div class="discord-widget-layout">
+                    
+                    <!-- Left Side: Server Status & Channels -->
+                    <div class="discord-server-sidebar glass-panel">
+                        <div class="discord-header">
+                            <div class="discord-server-icon-wrapper">
+                                <div class="discord-icon-glow"></div>
+                                <div class="discord-server-icon" id="discord-icon">
+                                    <i data-lucide="message-square" class="default-icon"></i>
+                                </div>
+                            </div>
+                            <div class="discord-server-info">
+                                <h3 id="discord-server-name">Carregando servidor...</h3>
+                                <span class="discord-online-badge">
+                                    <span class="pulse-dot"></span>
+                                    <span id="discord-online-count">0 Online</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="discord-channels-section">
+                            <h4>Canais Ativos</h4>
+                            <div class="discord-channels-list" id="discord-channels">
+                                <div class="discord-loading-shimmer"></div>
+                                <div class="discord-loading-shimmer"></div>
+                                <div class="discord-loading-shimmer"></div>
+                            </div>
+                        </div>
+
+                        <a href="#" id="discord-invite-btn" target="_blank" class="btn btn-discord">
+                            <i data-lucide="external-link"></i>
+                            <span>Entrar no Servidor</span>
+                        </a>
                     </div>
 
-                    <div class="ebook-info-card">
-                        <span class="ebook-badge">Ebook Disponível na Amazon</span>
-                        <h3 class="ebook-title">IA no Trabalho</h3>
-                        <p class="ebook-tagline">101 Sistemas, Prompts e Estratégias para Produzir Mais, Vender Melhor e Ganhar Tempo</p>
-                        
-                        <p class="ebook-description">
-                            Desenvolvido por <strong>André Alves</strong>, este ebook é um manual prático projetado para profissionais, freelancers e empreendedores que desejam extrair o máximo potencial das ferramentas de Inteligência Artificial.
+                    <!-- Right Side: Online Members List -->
+                    <div class="discord-members-panel glass-panel">
+                        <div class="discord-panel-header">
+                            <h4>Membros Online</h4>
+                            <span class="members-count" id="discord-members-count">0</span>
+                        </div>
+                        <div class="discord-members-list" id="discord-members">
+                            <div class="discord-loading-shimmer"></div>
+                            <div class="discord-loading-shimmer"></div>
+                            <div class="discord-loading-shimmer"></div>
+                            <div class="discord-loading-shimmer"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Settings Toggle: Configure Guild ID -->
+                <div class="discord-settings-container">
+                    <button class="btn btn-link" id="toggle-discord-settings-btn">
+                        <i data-lucide="settings"></i>
+                        <span>Configurar outro servidor do Discord</span>
+                    </button>
+                    
+                    <div class="discord-settings-form glass-panel hidden" id="discord-settings-form">
+                        <p class="settings-desc">
+                            Para ver as informações do seu próprio servidor, certifique-se de que a opção 
+                            <strong>"Habilitar Widget do Servidor"</strong> está ativa nas configurações do Discord, 
+                            e insira o ID do seu servidor abaixo.
                         </p>
-
-                        <div class="ebook-benefits">
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                                <div class="benefit-text"><strong>101 Prompts Prontos:</strong> Instruções testadas para marketing, vendas e gestão.</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                                <div class="benefit-text"><strong>Sistemas de Trabalho:</strong> Como integrar a IA na rotina da sua empresa.</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                                <div class="benefit-text"><strong>Estratégias Reais:</strong> Métodos claros para gerar valor, aumentar vendas e faturar mais.</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                                <div class="benefit-text"><strong>Ganho de Tempo:</strong> Automatize tarefas repetitivas e foque no que realmente importa.</div>
-                            </div>
-                        </div>
-
-                        <div class="ebook-purchase-box">
-                            <div class="price-container">
-                                <span class="price-label">Formato Digital Kindle / Físico</span>
-                                <span class="price-value">Adquira na Amazon</span>
-                            </div>
-                            <a href="https://www.amazon.com/IA-Trabalho-sistemas-estrat%C3%A9gias-Portuguese-ebook/dp/B0GV22YV14" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg pulse-animation" id="btn-amazon-buy">
-                                <i data-lucide="shopping-cart"></i> Obter no Amazon Kindle
-                            </a>
-                        </div>
-
-                        <div class="ebook-socials">
-                            <span class="socials-label">Siga a página oficial do Ebook:</span>
-                            <div class="social-links-row">
-                                <a href="https://tiktok.com/@ebooks.info.ofc" target="_blank" rel="noopener noreferrer" class="social-link-btn" title="TikTok Oficial">
-                                    <i data-lucide="video"></i> <span>TikTok</span>
-                                </a>
-                                <a href="https://instagram.com/ebooks.info.ofc" target="_blank" rel="noopener noreferrer" class="social-link-btn" title="Instagram Oficial">
-                                    <i data-lucide="instagram"></i> <span>Instagram</span>
-                                </a>
-                                <a href="https://twitter.com/ebooks_info_ofc" target="_blank" rel="noopener noreferrer" class="social-link-btn" title="X (Twitter) Oficial">
-                                    <i data-lucide="twitter"></i> <span>X (Twitter)</span>
-                                </a>
-                            </div>
-                            <span class="social-handle">@ebooks.info.ofc</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="servicos" class="services-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-tagline">O Que Fazemos</span>
-                    <div class="fashion-divider"></div>
-                    <h2 class="section-title">Serviços Profissionais de Alta Qualidade</h2>
-                    <p class="section-subtitle">Ajudamos a sua empresa, produto ou marca pessoal a destacar-se no mundo digital com soluções sob medida.</p>
-                </div>
-
-                <div class="services-grid">
-                    <!-- Service 1: Website Creation -->
-                    <div class="service-card" id="service-web">
-                        <div class="service-icon-bg">
-                            <i data-lucide="layout" class="service-icon"></i>
-                        </div>
-                        <h3 class="service-card-title">Criação de Websites</h3>
-                        <p class="service-card-desc">Desenvolvimento de sites modernos, responsivos e otimizados para apresentar produtos ou pequenos negócios. Garanta uma presença online marcante e conquiste novos clientes.</p>
-                        <ul class="service-card-features">
-                            <li><i data-lucide="check"></i> Design Exclusivo & Responsivo</li>
-                            <li><i data-lucide="check"></i> Otimização para SEO Google</li>
-                            <li><i data-lucide="check"></i> Integração com WhatsApp/Redes</li>
-                            <li><i data-lucide="check"></i> Páginas de Vendas (Landing Pages)</li>
-                        </ul>
-                        <a href="#simulador" class="service-card-link">Planear Projeto <i data-lucide="chevron-right"></i></a>
-                    </div>
-
-                    <!-- Service 2: Video Editing -->
-                    <div class="service-card" id="service-video">
-                        <div class="service-icon-bg">
-                            <i data-lucide="clapperboard" class="service-icon"></i>
-                        </div>
-                        <h3 class="service-card-title">Edição de Vídeos</h3>
-                        <p class="service-card-desc">Edição de vídeo dinâmica e profissional para redes sociais (TikTok, Reels, YouTube) ou apresentações empresariais. Transforme as suas gravações brutas em conteúdo magnético.</p>
-                        <ul class="service-card-features">
-                            <li><i data-lucide="check"></i> Cortes dinâmicos e ritmo ideal</li>
-                            <li><i data-lucide="check"></i> Legendas animadas e efeitos visuais</li>
-                            <li><i data-lucide="check"></i> Correção de cor e áudio limpo</li>
-                            <li><i data-lucide="check"></i> Formatos para Reels, Shorts e TikTok</li>
-                        </ul>
-                        <a href="#simulador" class="service-card-link">Planear Projeto <i data-lucide="chevron-right"></i></a>
-                    </div>
-
-                    <!-- Service 3: Presentations & Docs -->
-                    <div class="service-card" id="service-office">
-                        <div class="service-icon-bg">
-                            <i data-lucide="file-text" class="service-icon"></i>
-                        </div>
-                        <h3 class="service-card-title">Apresentações & Documentos</h3>
-                        <p class="service-card-desc">Design e estruturação de apresentações profissionais em suporte PowerPoint, documentos em Word e outros formatos corporativos. Comunique as suas ideias com impacto.</p>
-                        <ul class="service-card-features">
-                            <li><i data-lucide="check"></i> Apresentações Comerciais de Alto Impacto</li>
-                            <li><i data-lucide="check"></i> Templates Word corporativos limpos</li>
-                            <li><i data-lucide="check"></i> Infográficos e diagramas sob medida</li>
-                            <li><i data-lucide="check"></i> Formatação Académica e Profissional</li>
-                        </ul>
-                        <a href="#simulador" class="service-card-link">Planear Projeto <i data-lucide="chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Budget Simulator -->
-        <section id="simulador" class="simulator-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-tagline">Planeador de Projetos</span>
-                    <div class="fashion-divider"></div>
-                    <h2 class="section-title">Configure o seu Pedido</h2>
-                    <p class="section-subtitle">Selecione os serviços que necessita e envie o seu planeamento. Responderei com um orçamento personalizado sob medida!</p>
-                </div>
-
-                <div class="simulator-card">
-                    <div class="simulator-body">
-                        <div class="simulator-options">
-                            
-                            <!-- Option 1: Web -->
-                            <div class="simulator-group">
-                                <h4 class="group-title"><i data-lucide="globe"></i> Criação de Website</h4>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="calc-web-site" class="calc-trigger">
-                                    <label for="calc-web-site">
-                                        <div class="option-details">
-                                            <span class="option-name">Website Corporativo / Landing Page</span>
-                                            <span class="option-desc">Ideal para produtos ou pequenos negócios, design responsivo.</span>
-                                        </div>
-                                        <span class="option-price">Selecionar</span>
-                                    </label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="calc-web-seo" class="calc-trigger">
-                                    <label for="calc-web-seo">
-                                        <div class="option-details">
-                                            <span class="option-name">Otimização SEO & Performance Avançada</span>
-                                            <span class="option-desc">Para rankear melhor nos motores de busca (Google).</span>
-                                        </div>
-                                        <span class="option-price">Adicionar</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Option 2: Video -->
-                            <div class="simulator-group">
-                                <h4 class="group-title"><i data-lucide="film"></i> Edição de Vídeo</h4>
-                                <div class="slider-option">
-                                    <div class="slider-header">
-                                        <span class="option-name">Quantidade de Vídeos</span>
-                                        <span class="slider-value" id="video-count-label">0 vídeos</span>
-                                    </div>
-                                    <input type="range" id="calc-video-qty" min="0" max="15" value="0" class="calc-slider">
-                                </div>
-                                <div class="select-option">
-                                    <label for="calc-video-style" class="option-name">Estilo de Edição</label>
-                                    <select id="calc-video-style" class="calc-trigger">
-                                        <option value="basic" selected>Edição Simples (Cortes, Áudio)</option>
-                                        <option value="advanced">Edição Dinâmica (Legendas, Efeitos)</option>
-                                        <option value="premium">Edição Corporativa (Promo, Branding)</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Option 3: Presentations -->
-                            <div class="simulator-group">
-                                <h4 class="group-title"><i data-lucide="presentation"></i> Apresentações & Documentos</h4>
-                                <div class="slider-option">
-                                    <div class="slider-header">
-                                        <span class="option-name">Número de Slides / Páginas</span>
-                                        <span class="slider-value" id="slides-count-label">0 slides</span>
-                                    </div>
-                                    <input type="range" id="calc-slides-qty" min="0" max="40" value="0" class="calc-slider">
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="calc-slides-design" class="calc-trigger">
-                                    <label for="calc-slides-design">
-                                        <div class="option-details">
-                                            <span class="option-name">Criação de Template Personalizado (Master Slide)</span>
-                                            <span class="option-desc">Design exclusivo alinhado com a identidade visual da sua marca.</span>
-                                        </div>
-                                        <span class="option-price">Adicionar</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Estimate Box -->
-                        <div class="simulator-result">
-                            <div class="result-card">
-                                <h3>Resumo do Pedido</h3>
-                                <div class="result-summary-list" id="result-summary-list">
-                                    <p class="empty-summary-text">Nenhum serviço selecionado ainda.</p>
-                                </div>
-                                <div class="result-total">
-                                    <span>Orçamento:</span>
-                                    <span class="price-tag" id="calculated-total">Sob Consulta</span>
-                                </div>
-                                <p class="result-disclaimer">*O valor final será calculado e enviado após a análise dos requisitos específicos do seu projeto.</p>
-                                
-                                <div class="result-actions">
-                                    <button class="btn btn-primary btn-block" id="btn-whatsapp-order">
-                                        <i data-lucide="message-square"></i> Enviar Pedido via WhatsApp
-                                    </button>
-                                    <button class="btn btn-secondary btn-block" id="btn-email-order">
-                                        <i data-lucide="mail"></i> Solicitar por Email
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-        <!-- Contact Section -->
-        <section id="contactos" class="contact-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-tagline">Vamos Conversar?</span>
-                    <div class="fashion-divider"></div>
-                    <h2 class="section-title">Entre em Contacto Connosco</h2>
-                    <p class="section-subtitle">Tem alguma dúvida ou quer iniciar um projeto? Fale diretamente com o André Alves através do canal da sua preferência.</p>
-                </div>
-
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <div class="contact-card-v2">
-                            <div class="logo-brand-mini">
-                                <img src="assets/logo.png" alt="Nexus Brand" class="brand-mini-img">
-                                <h4>Nexus Serviços</h4>
-                            </div>
-                            <p>Pronto para elevar o nível da sua comunicação digital. Respondemos com a máxima brevidade.</p>
-                            
-                            <div class="contact-methods">
-                                <a href="mailto:andresantosalves2008@gmail.com" class="contact-method-item">
-                                    <div class="method-icon mail"><i data-lucide="mail"></i></div>
-                                    <div class="method-details">
-                                        <span class="method-title">Email Geral</span>
-                                        <span class="method-value">andresantosalves2008@gmail.com</span>
-                                    </div>
-                                </a>
-                                
-                                <a href="https://wa.me/351966391852" target="_blank" rel="noopener noreferrer" class="contact-method-item">
-                                    <div class="method-icon whatsapp"><i data-lucide="phone"></i></div>
-                                    <div class="method-details">
-                                        <span class="method-title">WhatsApp</span>
-                                        <span class="method-value">+351 966 391 852</span>
-                                    </div>
-                                </a>
-                                
-                                <a href="https://instagram.com/andrealves008" target="_blank" rel="noopener noreferrer" class="contact-method-item">
-                                    <div class="method-icon instagram"><i data-lucide="instagram"></i></div>
-                                    <div class="method-details">
-                                        <span class="method-title">Instagram Profissional</span>
-                                        <span class="method-value">@andrealves008</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-form-card">
-                        <h3>Mensagem Direta</h3>
-                        <form id="direct-contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="form-name">Nome</label>
-                                    <input type="text" id="form-name" placeholder="O seu nome" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-email">Email</label>
-                                <input type="email" id="form-email" placeholder="O seu endereço de email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="form-message">Como podemos ajudar?</label>
-                                <textarea id="form-message" rows="4" placeholder="Descreva sucintamente o seu projeto..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
-                                <span class="btn-text">Enviar Mensagem</span>
-                                <i data-lucide="send"></i>
+                        <div class="form-group-inline">
+                            <input type="text" id="discord-guild-id-input" placeholder="1157231609918013440" class="form-input">
+                            <button class="btn btn-primary" id="save-discord-guild-btn">
+                                <span>Salvar</span>
                             </button>
-                        </form>
-                        <div id="form-feedback-message" class="form-feedback hidden"></div>
+                        </div>
+                        <button class="btn btn-link btn-reset" id="reset-discord-guild-btn">Restaurar Padrão</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: CONTACT -->
+        <section id="contact" class="content-section scroll-reveal">
+            <div class="section-header">
+                <span class="section-tagline">Iniciar Projeto</span>
+                <h2 class="section-title">Solicite um Orçamento</h2>
+            </div>
+
+            <div class="contact-layout">
+                <!-- Form Column -->
+                <div class="contact-form-wrapper glass-panel">
+                    <form id="quote-form" class="quote-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Seu Nome</label>
+                                <input type="text" id="contact-name" name="name" required placeholder="Ex: André Silva" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Seu E-mail</label>
+                                <input type="email" id="contact-email" name="email" required placeholder="Ex: andre@exemplo.com" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-service">Serviço Desejado</label>
+                            <select id="contact-service" name="service" class="form-input select-input">
+                                <option value="web">Criação de Website 3D</option>
+                                <option value="video">Edição de Vídeo Profissional</option>
+                                <option value="docs">Apresentações e Documentos</option>
+                                <option value="general">Outro Serviço</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-desc">Detalhes do Projeto</label>
+                            <textarea id="contact-desc" name="description" rows="5" required placeholder="Fale um pouco sobre o que você precisa..." class="form-input textarea-input"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span>Enviar Proposta</span>
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info Column -->
+                <div class="contact-info-wrapper">
+                    <div class="info-card glass-panel">
+                        <div class="info-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Contato Direto</h4>
+                            <p>contato@nexus-services.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card glass-panel">
+                        <div class="info-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Tempo de Resposta</h4>
+                            <p>Respondemos em menos de 24 horas.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card glass-panel">
+                        <div class="info-icon">
+                            <i data-lucide="check-circle-2"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Garantia Nexus</h4>
+                            <p>Projetos desenvolvidos com extrema atenção ao detalhe e excelência técnica.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <img src="assets/logo.png" alt="Nexus Logo">
-                    <span>NEXUS</span>
-                </div>
-                <p>Inovação, ebooks e criação de soluções digitais. Tudo num só lugar.</p>
-                <div class="social-icons">
-                    <a href="https://instagram.com/andrealves008" target="_blank" rel="noopener noreferrer" aria-label="Instagram André Alves"><i data-lucide="instagram"></i></a>
-                    <a href="https://wa.me/351966391852" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp André Alves"><i data-lucide="phone"></i></a>
-                    <a href="mailto:andresantosalves2008@gmail.com" aria-label="Email André Alves"><i data-lucide="mail"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <h4>Navegação</h4>
-                <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#ebook">Ebook IA</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#simulador">Orçamento</a></li>
-                    <li><a href="#contactos">Contactos</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-services">
-                <h4>Produtos & Serviços</h4>
-                <ul>
-                    <li><a href="#ebook">Ebook "IA no Trabalho"</a></li>
-                    <li><a href="#servicos">Criação de Websites</a></li>
-                    <li><a href="#servicos">Edição de Vídeos</a></li>
-                    <li><a href="#servicos">Apresentações PowerPoint/Word</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-legal">
-                <h4>Redes Ebook</h4>
-                <ul class="handle-list">
-                    <li><span class="handle-name">@ebooks.info.ofc</span></li>
-                    <li><a href="https://tiktok.com/@ebooks.info.ofc" target="_blank" rel="noopener noreferrer"><i data-lucide="video"></i> TikTok</a></li>
-                    <li><a href="https://instagram.com/ebooks.info.ofc" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i> Instagram</a></li>
-                    <li><a href="https://twitter.com/ebooks_info_ofc" target="_blank" rel="noopener noreferrer"><i data-lucide="twitter"></i> X (Twitter)</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 Nexus. Todos os direitos reservados. Desenvolvido por André Alves.</p>
-        </div>
-    </footer>
-
-    <!-- Custom Script -->
+    <!-- Scripts -->
+    <script src="three-scene.js"></script>
+    <script src="discord-widget.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

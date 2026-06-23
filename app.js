@@ -6,11 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.lucide.createIcons();
     }
 
-    // Initialize Discord widget
-    if (window.initDiscordWidget) {
-        window.initDiscordWidget();
-    }
-
     // DOM Elements
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const sidebarNav = document.getElementById('sidebar-nav');

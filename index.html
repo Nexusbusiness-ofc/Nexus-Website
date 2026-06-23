@@ -270,7 +270,7 @@
                 <span class="section-tagline">Integra&ccedil;&atilde;o em Tempo Real</span>
                 <h2 class="section-title">Comunidade Discord</h2>
                 <p class="section-description">
-                    Visualize o status de atividade da nossa comunidade em tempo real. Membros ativos, canais de voz e conex&otilde;es diretas.
+                    Junte-se à nossa comunidade no Discord para suporte em tempo real, networking e acompanhar novos projetos.
                 </p>
             </div>
 
@@ -280,76 +280,32 @@
                 <!-- Main Widget Layout -->
                 <div class="discord-widget-layout">
                     
-                    <!-- Left Side: Server Status & Channels -->
-                    <div class="discord-server-sidebar glass-panel">
-                        <div class="discord-header">
-                            <div class="discord-server-icon-wrapper">
-                                <div class="discord-icon-glow"></div>
-                                <div class="discord-server-icon" id="discord-icon">
-                                    <i data-lucide="message-square" class="default-icon"></i>
-                                </div>
-                            </div>
-                            <div class="discord-server-info">
-                                <h3 id="discord-server-name">Carregando servidor...</h3>
-                                <span class="discord-online-badge">
-                                    <span class="pulse-dot"></span>
-                                    <span id="discord-online-count">0 Online</span>
-                                </span>
-                            </div>
+                    <!-- Left Side: Info & Invite -->
+                    <div class="discord-info-card glass-panel">
+                        <div class="discord-brand">
+                            <i data-lucide="message-square" class="discord-brand-icon"></i>
+                            <h3>Comunidade Oficial Nexus</h3>
                         </div>
-
-                        <div class="discord-channels-section">
-                            <h4>Canais Ativos</h4>
-                            <div class="discord-channels-list" id="discord-channels">
-                                <div class="discord-loading-shimmer"></div>
-                                <div class="discord-loading-shimmer"></div>
-                                <div class="discord-loading-shimmer"></div>
-                            </div>
-                        </div>
-
-                        <a href="#" id="discord-invite-btn" target="_blank" class="btn btn-discord">
+                        <p class="discord-info-text">
+                            O nosso servidor do Discord &eacute; o ponto de encontro ideal para obter ajuda t&eacute;cnica, debater ideias, fazer networking com outros profissionais e receber novidades sobre os nossos servi&ccedil;os em primeira m&atilde;o.
+                        </p>
+                        <ul class="discord-benefits">
+                            <li><i data-lucide="check-circle-2"></i> Suporte T&eacute;cnico</li>
+                            <li><i data-lucide="check-circle-2"></i> Networking de Elite</li>
+                            <li><i data-lucide="check-circle-2"></i> Novidades & Eventos</li>
+                            <li><i data-lucide="check-circle-2"></i> Feedback R&aacute;pido</li>
+                        </ul>
+                        <a href="https://discord.gg/e2FSCbeAk" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
                             <i data-lucide="external-link"></i>
                             <span>Entrar no Servidor</span>
                         </a>
                     </div>
 
-                    <!-- Right Side: Online Members List -->
-                    <div class="discord-members-panel glass-panel">
-                        <div class="discord-panel-header">
-                            <h4>Membros Online</h4>
-                            <span class="members-count" id="discord-members-count">0</span>
-                        </div>
-                        <div class="discord-members-list" id="discord-members">
-                            <div class="discord-loading-shimmer"></div>
-                            <div class="discord-loading-shimmer"></div>
-                            <div class="discord-loading-shimmer"></div>
-                            <div class="discord-loading-shimmer"></div>
-                        </div>
+                    <!-- Right Side: Official Discord Iframe -->
+                    <div class="discord-iframe-container glass-panel">
+                        <iframe src="https://discord.com/widget?id=1157231609918013440&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" class="discord-iframe"></iframe>
                     </div>
 
-                </div>
-
-                <!-- Settings Toggle: Configure Guild ID -->
-                <div class="discord-settings-container">
-                    <button class="btn btn-link" id="toggle-discord-settings-btn">
-                        <i data-lucide="settings"></i>
-                        <span>Configurar outro servidor do Discord</span>
-                    </button>
-                    
-                    <div class="discord-settings-form glass-panel hidden" id="discord-settings-form">
-                        <p class="settings-desc">
-                            Para ver as informa&ccedil;&otilde;es do seu pr&oacute;prio servidor, certifique-se de que a op&ccedil;&atilde;o 
-                            <strong>"Habilitar Widget do Servidor"</strong> está ativa nas configura&ccedil;&otilde;es do Discord, 
-                            e insira o ID do seu servidor abaixo.
-                        </p>
-                        <div class="form-group-inline">
-                            <input type="text" id="discord-guild-id-input" placeholder="1157231609918013440" class="form-input">
-                            <button class="btn btn-primary" id="save-discord-guild-btn">
-                                <span>Salvar</span>
-                            </button>
-                        </div>
-                        <button class="btn btn-link btn-reset" id="reset-discord-guild-btn">Restaurar Padr&atilde;o</button>
-                    </div>
                 </div>
 
             </div>
@@ -455,7 +411,6 @@
 
     <!-- Scripts -->
     <script src="three-scene.js"></script>
-    <script src="discord-widget.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

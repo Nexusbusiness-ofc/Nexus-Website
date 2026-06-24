@@ -1101,20 +1101,19 @@ body {
 }
 
 .discord-iframe-container {
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 500px;
+    padding: 0;
+    overflow: hidden;
+    height: 600px;
     background: rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(88, 101, 242, 0.15);
     box-shadow: 0 8px 32px 0 rgba(88, 101, 242, 0.05);
 }
 
-.discord-iframe {
+.discord-iframe, widgetbot {
     border-radius: 12px;
     border: none;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    display: block;
 }
 
 @media (max-width: 900px) {
@@ -1125,8 +1124,8 @@ body {
         grid-template-columns: 1fr;
     }
     .discord-iframe-container {
-        min-height: auto;
-        padding: 1rem;
+        height: 500px;
+        padding: 0;
     }
 }
 

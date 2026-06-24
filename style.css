@@ -1037,95 +1037,236 @@ body {
 
 .discord-widget-layout {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 350px 1fr;
     gap: 2.5rem;
     align-items: stretch;
 }
 
-.discord-info-card {
-    padding: 2.5rem;
+.discord-iframe-card {
+    padding: 1.5rem;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    align-items: center;
     justify-content: center;
-}
-
-.discord-brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.discord-brand-icon {
-    width: 36px;
-    height: 36px;
-    color: #5865F2;
-    filter: drop-shadow(0 0 8px rgba(88, 101, 242, 0.4));
-}
-
-.discord-brand h3 {
-    font-family: var(--font-title);
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--color-text);
-}
-
-.discord-info-text {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-}
-
-.discord-benefits {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0.5rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.discord-benefits li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--color-text);
-    font-weight: 500;
-}
-
-.discord-benefits li i {
-    width: 18px;
-    height: 18px;
-    color: var(--color-cyan);
-}
-
-.discord-iframe-container {
-    padding: 0;
-    overflow: hidden;
-    height: 600px;
+    height: 540px;
     background: rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(88, 101, 242, 0.15);
     box-shadow: 0 8px 32px 0 rgba(88, 101, 242, 0.05);
 }
 
-.discord-iframe, widgetbot {
+.discord-iframe {
     border-radius: 12px;
     border: none;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     display: block;
 }
 
+.discord-channels-panel {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 540px;
+}
+
+.discord-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 1rem;
+}
+
+.discord-panel-header h4 {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+.discord-status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(35, 165, 90, 0.1);
+    border: 1px solid rgba(35, 165, 90, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #23a55a;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #23a55a;
+    border-radius: 50%;
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(35, 165, 90, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(35, 165, 90, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(35, 165, 90, 0); }
+}
+
+.discord-channels-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.discord-section-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.discord-channels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 0.5rem;
+}
+
+.discord-channel-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.discord-channel-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: var(--transition-fast);
+}
+
+.discord-channel-item:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.discord-channel-item i {
+    width: 18px;
+    height: 18px;
+    color: #5865F2;
+    opacity: 0.8;
+}
+
+.voice-users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 2.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.voice-user {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.voice-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.voice-badge {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    margin-left: auto;
+    letter-spacing: 0.5px;
+}
+
+.discord-loading-shimmer {
+    height: 44px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.01) 25%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.01) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.discord-error-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    padding: 3rem 2rem;
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* DISCORD SETTINGS */
+.discord-settings-container {
+    margin-top: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discord-settings-form {
+    width: 100%;
+    max-width: 550px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.discord-settings-form.hidden {
+    display: none;
+}
+
+.settings-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 1rem;
+}
+
 @media (max-width: 900px) {
     .discord-widget-layout {
         grid-template-columns: 1fr;
     }
-    .discord-benefits {
-        grid-template-columns: 1fr;
+    .discord-iframe-card, .discord-channels-panel {
+        height: auto;
     }
-    .discord-iframe-container {
-        height: 500px;
-        padding: 0;
+    .discord-iframe-card {
+        padding: 1rem;
     }
 }
 

@@ -136,68 +136,25 @@
 
     // Create Textured 3D N
     function create3DLogo() {
-        const shape = new THREE.Shape();
-        shape.moveTo(-16, -20);
-        shape.lineTo(-16, 20);
-        shape.lineTo(-7, 20);
-        shape.lineTo(7, -8);
-        shape.lineTo(7, 20);
-        shape.lineTo(16, 20);
-        shape.lineTo(16, -20);
-        shape.lineTo(7, -20);
-        shape.lineTo(-7, 8);
-        shape.lineTo(-7, -20);
-        shape.closePath();
-
-        const extrudeSettings = {
-            steps: 2,
-            depth: 5,
-            bevelEnabled: true,
-            bevelThickness: 1.5,
-            bevelSize: 0.8,
-            bevelOffset: 0,
-            bevelSegments: 4
-        };
-
-        const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-        geometry.center();
+        // Create 32x32 Plane representing the logo image directly
+        const geometry = new THREE.PlaneGeometry(32, 32);
 
         // Load logo.png as texture mapping
         const textureLoader = new THREE.TextureLoader();
-        const logoTexture = textureLoader.load('logo.png', function(texture) {
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapT = THREE.RepeatWrapping;
-            texture.repeat.set(0.018, 0.018); // scale repeat detail
-            texture.offset.set(0.5, 0.5);
-        });
+        const logoTexture = textureLoader.load('logo.png');
 
-        // Mirror-chrome physical material with texture
+        // Physical material mapped to the logo image with reflections
         const material = new THREE.MeshPhysicalMaterial({
             map: logoTexture,
-            bumpMap: logoTexture,
-            bumpScale: 0.1,
-            metalness: 0.85,          // highly metallic
-            roughness: 0.18,          // shiny reflections
-            transmission: 0.75,       // crystal refraction
-            ior: 1.65,                // refractive index
-            thickness: 3.5,           // physical refraction depth
+            metalness: 0.7,          // metallic finish
+            roughness: 0.15,         // shiny reflections
             clearcoat: 1.0,
-            clearcoatRoughness: 0.1,
+            clearcoatRoughness: 0.15,
             side: THREE.DoubleSide,
             transparent: true
         });
 
-        // Glowing cyan/gold edges overlay
-        const wireframeGeom = new THREE.EdgesGeometry(geometry);
-        const wireframeMat = new THREE.LineBasicMaterial({
-            color: 0x00b4d8,
-            transparent: true,
-            opacity: 0.3
-        });
-        const wireframe = new THREE.LineSegments(wireframeGeom, wireframeMat);
-
         logoMesh = new THREE.Mesh(geometry, material);
-        logoMesh.add(wireframe);
         
         logoMesh.scale.set(1.2, 1.2, 1.2);
         logoMesh.position.set(0, 0, 0);

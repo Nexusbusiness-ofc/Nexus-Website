@@ -162,9 +162,9 @@
         const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
         geometry.center();
 
-        // Load logo.jpg as texture mapping
+        // Load logo.png as texture mapping
         const textureLoader = new THREE.TextureLoader();
-        const logoTexture = textureLoader.load('logo.jpg', function(texture) {
+        const logoTexture = textureLoader.load('logo.png', function(texture) {
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.set(0.018, 0.018); // scale repeat detail
@@ -183,7 +183,8 @@
             thickness: 3.5,           // physical refraction depth
             clearcoat: 1.0,
             clearcoatRoughness: 0.1,
-            side: THREE.DoubleSide
+            side: THREE.DoubleSide,
+            transparent: true
         });
 
         // Glowing cyan/gold edges overlay
